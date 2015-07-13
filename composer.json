@@ -1,0 +1,7 @@
+{
+    "name": "dbotsmith/devphpstack",
+    "type": "chef-cookbook",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

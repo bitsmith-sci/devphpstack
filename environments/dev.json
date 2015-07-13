@@ -1,0 +1,67 @@
+{
+    "name": "dev",
+    "description": "phpstack in vagrant vm",
+    "cookbook_versions": {
+        "devphpstack": "~> 0.1.1"
+    },
+    "json_class": "Chef::Environment",
+    "chef_type": "environment",
+    "default_attributes": {
+        "authorization": {
+            "sudo": {
+                "passwordless": true,
+                "users": [
+                    "vagrant"
+                ]
+            }
+        },
+        "mysql": {
+            "server_root_password": "randompass"
+        },
+        "phpstack": {
+            "apache": {
+                "group": "apache",
+                "sites": {
+                    "80": {
+                        "devphp.local": {
+                            "allow_override": [
+                                "All"
+                            ],
+                            "cookbook": "devphpstack",
+                            "databases": {
+                                "example_db": {
+                                    "mysql_password": "noneofyerbeeswax",
+                                    "mysql_user": "exampleuser",
+                                    "privileges": [
+                                        "select",
+                                        "update",
+                                        "insert"
+                                    ]
+                                }
+                            },
+                            "docroot": "/vagrant",
+                            "loglevel": "warn",
+                            "template": "example.com.erb"
+                        }
+                    }
+                },
+                "user": "apache"
+            },
+            "code-deployment": {
+                "enabled": false
+            },
+            "mysql": {
+                "example_db": {
+                    "password": "noneofyerbeeswax",
+                    "user": "exampleuser"
+                }
+            }
+        },
+        "stack_commons": {
+            "stackname": "phpstack"
+        }
+    },
+    "override_attributes": {
+
+    }
+}

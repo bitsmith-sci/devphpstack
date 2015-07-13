@@ -1,0 +1,3 @@
+<% #apache virtual host config file - borrow from phpstack cookbook, but remove /current from docroot -%>
+<% confbody = render "apache2/sites/example.com.erb", :cookbook => "phpstack" -%>
+<%= confbody.gsub(/(DocumentRoot .*)\/current/, "\\1") -%>
