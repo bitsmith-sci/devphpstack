@@ -8,3 +8,4 @@ version          '0.1.3'
 
 depends 'phpstack', '~> 4.0.2'
 depends 'mysql2_chef_gem', '~> 1.0'
+depends 'composer', '~> 2.1'
